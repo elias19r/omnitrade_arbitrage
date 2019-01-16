@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler/setup'
+
+require_relative '../lib/omnitrade_arbitrage'
+
+include OmnitradeArbitrage
+
+Signal.trap('INT') do
+  puts 'Terminated!'
+  exit 1
+end
+
+Signal.trap('TERM') do
+  puts 'Terminated!'
+  exit 1
+end
+
+Arbitrage.call
+
+puts 'Finished.'
